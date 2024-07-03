@@ -1,0 +1,7 @@
+/* .cardDetails:hover > div {
+  display: none;
+} */
+
+.cardDetails:hover > .cardOption {
+  display: flex;
+}

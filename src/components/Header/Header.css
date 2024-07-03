@@ -1,0 +1,11 @@
+.greenBgColor{
+  background-color: var(--primary-bg-color);
+}
+
+.greenTextColor{
+  color: var(--primary-bg-color);
+}
+
+/* li:nth-child(2)::after, li:nth-child(3)::after, li:nth-child(4)::after{
+
+} */

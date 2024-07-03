@@ -1,0 +1,43 @@
+.softBgGreen {
+  background-color: var(--soft-primary-bg-color);
+}
+
+.greenBgColor {
+  background-color: var(--primary-bg-color);
+}
+
+.greenTextColor {
+  color: var(--primary-bg-color);
+}
+
+.warningBgColor {
+  color: var(--warning-bg-color);
+}
+
+input[type="radio"]::after {
+  width: 16px;
+  height: 16px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #d1d3d1;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+input[type="radio"]:checked::after {
+  width: 16px;
+  height: 16px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: var(--primary-bg-color);
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}

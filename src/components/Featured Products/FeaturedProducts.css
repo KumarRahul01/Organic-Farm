@@ -1,0 +1,7 @@
+.greenBgColor{
+  background-color: var(--primary-bg-color);
+}
+
+.greenSoftBgColor{
+  background-color: var(--soft-primary-bg-color);
+}
