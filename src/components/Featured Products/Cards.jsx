@@ -1,15 +1,15 @@
 import React from "react";
 import { PiHandbag } from "react-icons/pi";
-
 import './FeaturedProducts.css'
+import './Card.css';
 
 
 const Cards = ({name, currPrice, prevPrice, img}) => {
   return (
     <>
-      <div className="w-64 md:h-[360px] border rounded-md shadow">
-        <div className="w-full md:h-[70%] flex justify-center items-center overflow-hidden">
-          <img className="object-cover" src={img} alt="" />
+      <div className="w-64 md:h-[360px] border rounded-md shadow hover:border-2 hover:border-green-500 hover:shadow-xl transition-all duration-150 cursor-pointer mainContainer">
+        <div className="w-full md:h-[70%] flex justify-center items-center overflow-hidden imgContainer">
+          <img className="object-cover transition-all duration-150" src={img} alt="" />
         </div>
         <div className="px-5 mt-5 md:-mt-8 relative">
           <h3 className="text-lg font-medium">{name}</h3>
@@ -18,7 +18,7 @@ const Cards = ({name, currPrice, prevPrice, img}) => {
             <h4 className="line-through text-sm my-2">₹ {prevPrice}</h4>
           </div>
 
-          <button className="w-full bg-green-500 text-white rounded-md py-2 px-4 mb-5 md:mt-2 -mt-2">
+          <button className="w-full bg-green-500 hover:bg-green-600 text-white rounded-md py-2 px-4 mb-5 md:mt-2 -mt-2">
             Add to Cart
           </button>
 

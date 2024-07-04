@@ -1,0 +1,4 @@
+.mainContainer:hover > .imgContainer > img{
+  transform: scale(1.2);
+  /* transition-duration: 150ms; */
+}

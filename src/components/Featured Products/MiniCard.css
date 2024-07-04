@@ -2,6 +2,16 @@
   display: none;
 } */
 
+.mainContainer:hover > .imgContainer > img{
+  transform: scale(1.1);
+  /* transition-duration: 150ms; */
+}
+
+
 .cardDetails:hover > .cardOption {
   display: flex;
+}
+
+.numFont{
+  font-family: RO;
 }
