@@ -18,10 +18,10 @@ const MiniCard = ({name, prevPrice, currPrice, img}) => {
 
         {/* Absolute */}
         <div className="hidden absolute w-fit cardOption flex-col -space-y-[2px] gap-2">
-          <div className="md:bottom-2 ml-[92px] mr-[6px] hover:bg-green-500 hover:text-white transition-all duration-150 border rounded-full p-1 bg-gray-200 cursor-pointer">
+          <div className="lg:bottom-2 ml-[92px] mr-[6px] hover:bg-green-500 hover:text-white transition-all duration-150 border rounded-full p-1 bg-gray-200 cursor-pointer">
             <MdOutlineRemoveRedEye size={"1.25rem"} />
           </div>
-          <div className="md:bottom-2 ml-[92px] mr-[6px] hover:bg-green-500 hover:text-white transition-all duration-150 border rounded-full p-1 bg-gray-200 cursor-pointer">
+          <div className="lg:bottom-2 ml-[92px] mr-[6px] hover:bg-green-500 hover:text-white transition-all duration-150 border rounded-full p-1 bg-gray-200 cursor-pointer">
             <PiHandbag size={"1.25rem"} />
           </div>
         </div>

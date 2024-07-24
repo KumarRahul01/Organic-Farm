@@ -5,11 +5,11 @@ import Cards from "./Featured Products/Cards";
 
 const NewProducts = () => {
   return (
-    <div className="md:w-10/12 mx-auto w-full p-5 md:p-0 md:mt-28">
+    <div className="lg:w-10/12 mx-auto w-full p-5 lg:p-0 lg:mt-28">
       <SectionTitle sectionName={"Newest Products"} />
 
       {/* Horizontal cards */}
-      <div className="flex flex-col md:flex-row justify-center md:justify-start items-center md:gap-5 gap-10 mb-10 md:mb-20">
+      <div className="flex flex-wrap lg:flex-nowrap lg:flex-row lg:justify-start justify-center lg:items-center lg:gap-5 gap-10 lg:mb-20">
         {featuredVegetables.map((vegetable, i) => {
           return (
             <Cards
@@ -27,4 +27,4 @@ const NewProducts = () => {
   );
 };
 
-export default NewProducts;
+export default React.memo(NewProducts);
