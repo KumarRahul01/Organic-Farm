@@ -1,37 +1,42 @@
 import React, { useContext, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { ShoppingContext } from "../context/ShoppingContext";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
-  const { setQuantity } = useContext(ShoppingContext);
+  const { setQuantity, finalItems } = useContext(ShoppingContext);
 
   const navigate = useNavigate();
 
-  // const data = JSON.parse(localStorage.getItem("allData"));
-  // const itemData = [];
-  // data.forEach((item) => {
-  //   itemData.push(item[0]);
-  // });
-  // useEffect(() => {
-  //   console.log("Item Data Before", itemData);
-  // }, []);
+  localStorage.setItem("itemData", JSON.stringify(finalItems));
+  const data = localStorage.getItem("itemData");
+  const itemData = JSON.parse(data);
 
-  // let show = null;
-  // if (data.length > 0) {
-  //   show = true;
-  // } else {
-  //   show = false;
-  // }
+  let showVar;
+  if (itemData.length > 0) {
+    showVar = true;
+  } else {
+    showVar = false;
+  }
 
-  const [showData, setShowData] = useState(true);
+  const [showData, setShowData] = useState(showVar);
 
-  // const [count, setCount] = useState(1);
+  useEffect(() => {
+    setTimeout(() => {
+      toast.warn("Please do not refresh the page while checkout", {
+        position: "top-right",
+      });
+    }, 1000);
+  }, []);
+
+  const [count, setCount] = useState(1);
 
   // const increaseValue = () => {
-  //   setCount(count + 1);
+  //   setItemQuantity((prev) => prev + 1);
   // };
 
   // const handleRemove = (item) => {
@@ -40,10 +45,26 @@ const Cart = () => {
   //   console.log(newData);
   // };
 
+  const decreaseHanlder = () =>{
+    if(count > 1){
+      setCount(count - 1);
+    }
+    else{
+      toast.error("Please select a valid quantity");
+    }
+  }
+
   const placeOrder = () => {
     toast.success("Order placed successfully!");
     setQuantity(0);
     localStorage.clear();
+    navigate("/Organic-Farm/");
+    finalItems.length = 0;
+  };
+
+  const backHandler = () => {
+    setShowData(false);
+    finalItems.length = 0;
     navigate("/Organic-Farm/");
   };
 
@@ -59,21 +80,21 @@ const Cart = () => {
             <div className="w-full py-5 bg-gray-200">
               <div className="w-full flex flex-row text-center gap-2 sm:gap-0 p-5 lg:p-0">
                 {/* heading */}
-                <div className="w-1/5 lg:text-xl text-[16px] sm:text-base font-semibold lg:pl-6">
+                <div className="w-1/4 lg:text-xl text-[16px] sm:text-base font-semibold lg:pl-6">
                   Product
                 </div>
-                <div className="w-1/5 lg:text-xl text-[16px] sm:text-base font-semibold lg:pl-4">
+                <div className="w-1/4 lg:text-xl text-[16px] sm:text-base font-semibold lg:pl-4">
                   Price
                 </div>
-                <div className="w-1/5 lg:text-xl text-[16px] sm:text-base font-semibold">
+                <div className="w-1/4 lg:text-xl text-[16px] sm:text-base font-semibold">
                   Quantity
                 </div>
-                <div className="w-1/5 lg:text-xl text-[16px] sm:text-base font-semibold">
+                <div className="w-1/4 lg:text-xl text-[16px] sm:text-base font-semibold">
                   Total Amount
                 </div>
-                <div className="w-1/5 lg:text-xl text-[16px] sm:text-base font-semibold b-yellow-800">
+                {/* <div className="w-1/5 lg:text-xl text-[16px] sm:text-base font-semibold b-yellow-800">
                   Delete
-                </div>
+                </div> */}
                 {/* <div className="w-1/6 text-xl font-semibold">Place Order</div> */}
               </div>
 
@@ -81,31 +102,31 @@ const Cart = () => {
               {itemData.map((item, index) => (
                 <div
                   key={index}
-                  className="grid grid-cols-5 p-5 font-medium text-center"
+                  className="grid grid-cols-4 p-5 font-medium text-center"
                 >
                   <div className="">{item.name}</div>
                   <div className="numFont">{item.currPrice}</div>
                   <div className="numFont">
                     <button
                       className="bg-gray-500 px-2 text-xl mr-2"
-                      onClick={() => increaseValue()}
+                      onClick={() => setCount(count + 1)}
                     >
                       +
                     </button>
-                    {count}
+                    {count} Kg
                     <button
                       className="bg-gray-500 px-2 text-xl ml-2"
-                      onClick={() => setCount(count - 1)}
+                      onClick={() => decreaseHanlder()}
                     >
                       -
                     </button>
                   </div>
-                  <div className="numFont">{item.currPrice}</div>
-                  <div>
+                  <div className="numFont">{count * item.currPrice}</div>
+                  {/* <div>
                     <button onClick={() => handleRemove(item)}>
                       <MdDelete size={"1.5rem"} />
                     </button>
-                  </div>
+                  </div> */}
                   {/* <div>
                 <button onClick={() => handleRemove()}>
                   <FaCheckCircle size={"1.5rem"} />
@@ -127,6 +148,14 @@ const Cart = () => {
       ) : (
         <>
           <h3>Please Add something to your cart</h3>
+          <div className="flex justify-end p-5">
+            <button
+              className="bg-green-400 hover:bg-green-500 hover:ring-2 ring-green-400 transition-all duration-150 font-semibold px-4 py-2 rounded"
+              onClick={() => backHandler()}
+            >
+              Go Back
+            </button>
+          </div>
         </>
       )}
     </div>

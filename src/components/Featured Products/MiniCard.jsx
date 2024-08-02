@@ -12,7 +12,7 @@ const MiniCard = ({name, prevPrice, currPrice, img}) => {
       <div className="w-full flex flex-col pl-3 justify-center cardDetails relative">
         <h3 className="mb-2 font-medium">{name}</h3>
         <div className="flex items-center flex-row-reverse justify-end gap-3">
-          <h4 className="numFont font-semibold">₹ {currPrice}</h4>
+          <h4 className=" font-semibold">₹ {currPrice}</h4>
           <h4 className="line-through text-sm numFont font-medium">₹ {prevPrice}</h4>
         </div>
 

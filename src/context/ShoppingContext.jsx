@@ -6,17 +6,18 @@ export const ShoppingContext = createContext();
  const CartDetails = ({children})=>{
 
   const [quantity, setQuantity] = useState(0);
-  const [cartItems, setCartItems] = useState(0);
+  // const [cartItems, setCartItems] = useState(1);
+
+  const finalItems = [];
 
 
-
-  const showProducts = (item)=>{
-    console.log("Product Printed", item);
-  };
+  // const showProducts = (item)=>{
+  //   console.log("Product Printed", item);
+  // };
   
 
   return (
-    <ShoppingContext.Provider value={{cartItems, setCartItems, showProducts, quantity, setQuantity}}>
+    <ShoppingContext.Provider value={{quantity, setQuantity, finalItems}}>
       {children}
     </ShoppingContext.Provider>
   );

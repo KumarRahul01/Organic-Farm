@@ -9,31 +9,36 @@ import { RxCross2 } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import { ShoppingContext } from "../../context/ShoppingContext";
 
-
 const Header = () => {
-
-  const {quantity} = useContext(ShoppingContext)  
+  const { quantity } = useContext(ShoppingContext);
 
   // const menu = ["Home", "Products", "Shop", "Blog", "About Us", "Contact Us"];
-  const menu = [{
-    label: "Home",
-    path: "/Organic-Farm/"
-  },{
-    label: "Products",
-    path: "/Organic-Farm/products"
-  },{
-    label: "Shop",
-    path: "/Organic-Farm/shop"
-  }, {
-    label: "Blog",
-    path: "/Organic-Farm/blog"
-  }, {
-    label: "About Us",
-    path: "/Organic-Farm/about"
-  }, {
-    label: "Contact Us",
-    path: "/Organic-Farm/contact"
-  }]
+  const menu = [
+    {
+      label: "Home",
+      path: "/Organic-Farm/",
+    },
+    //   {
+    //   label: "Products",
+    //   path: "/Organic-Farm/products"
+    // },
+    // {
+    //   label: "Shop",
+    //   path: "/Organic-Farm/shop",
+    // },
+    // {
+    //   label: "Blog",
+    //   path: "/Organic-Farm/blog",
+    // },
+    {
+      label: "About Us",
+      path: "/Organic-Farm/about",
+    },
+    {
+      label: "Contact Us",
+      path: "/Organic-Farm/contact",
+    },
+  ];
 
   const [mobMenu, setMobMenu] = useState(false);
 
@@ -41,16 +46,18 @@ const Header = () => {
     <div>
       {/* Small Navbar */}
       <div className="lg:w-10/12 hidden mx-auto lg:flex justify-between items-center py-1">
-        <p className="text-xs font-light">Store Location: Lincoln- 344, Noida, UP</p>
+        <p className="text-xs font-light">
+          Store Location: Lincoln- 344, Noida, UP
+        </p>
         <div className="flex space-x-10">
-          <select
+          {/* <select
             name="currency"
             id="currency"
             className="rounded px-1 text-center bg-transparent border-none"
           >
             <option value="INR">INR</option>
             <option value="USD">USD</option>
-          </select>
+          </select> */}
           <div className="flex space-x-2">
             <button>Sign In</button>
             <div>/</div>
@@ -92,7 +99,12 @@ const Header = () => {
           <Link to={"/Organic-Farm/cart"} className="block sm:ml-5">
             <button className="flex items-center rounded-full mr-2">
               <HiOutlineShoppingBag size={"1.5rem"} />
-              <span className="mt-1 relative">Cart <div className="absolute -top-[8px] -right-3 px-[4px] text-xs text-white rounded-full bg-red-500">{quantity}</div> </span>
+              <span className="mt-1 relative">
+                Cart{" "}
+                <div className="absolute -top-[8px] -right-3 px-[4px] text-xs text-white rounded-full bg-red-500">
+                  {quantity}
+                </div>{" "}
+              </span>
             </button>
           </Link>
         </div>
@@ -121,10 +133,16 @@ const Header = () => {
 
         {/* Navbar in small devices */}
         <div className="lg:hidden flex flex-row-reverse justify-between items-center relative mx-5">
-          <div onClick={()=> setMobMenu(!mobMenu)}>
-            {
-              !mobMenu ? <><IoIosMenu size={"1.8rem"} /></> : <><RxCross2 size={"1.8rem"} /></>
-            }
+          <div onClick={() => setMobMenu(!mobMenu)}>
+            {!mobMenu ? (
+              <>
+                <IoIosMenu size={"1.8rem"} />
+              </>
+            ) : (
+              <>
+                <RxCross2 size={"1.8rem"} />
+              </>
+            )}
           </div>
           <div className="flex items-center space-x-2">
             <FiPhoneCall />
@@ -132,7 +150,11 @@ const Header = () => {
           </div>
 
           {mobMenu && (
-            <div className={`absolute w-full flex flex-col bg-gray-800 text-white top-12 z-20 ${mobMenu ? "translate-x-0": "-left-96"} transition-all duration-300`}>
+            <div
+              className={`absolute w-full flex flex-col bg-gray-800 text-white top-12 z-20 ${
+                mobMenu ? "translate-x-0" : "-left-96"
+              } transition-all duration-300`}
+            >
               <ul className="text-center p-2">
                 {menu.map((item, i) => {
                   return (

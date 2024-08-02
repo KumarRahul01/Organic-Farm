@@ -27,16 +27,6 @@ const Home = () => {
       {/* Featured Posts */}
       <section className="relative">
         <FeaturedProducts />
-        {/* {quantity > 0 && (
-          <>
-            <div className="hidden lg:block absolute top-20 right-10 lg:top-0 lg:right-[8rem] mx-auto">
-              <button className="flex items-center gap-2 w-[150px] bg-green-500 hover:bg-green-600 text-white rounded-md py-2 px-4 mb-5">
-                <h3>View Cart</h3>
-                <FaCheckCircle size={"1.25rem"} />
-              </button>
-            </div>
-          </>
-        )} */}
       </section>
 
       {/* Offers */}

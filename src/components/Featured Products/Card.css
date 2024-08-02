@@ -2,3 +2,7 @@
   transform: scale(1.2);
   /* transition-duration: 150ms; */
 }
+
+.mainContainer:hover > .setblock {
+  display: block;
+}

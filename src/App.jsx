@@ -5,6 +5,7 @@ import Cart from "./components/Cart";
 import About from "./components/About";
 import Blog from "./components/Blog";
 import Conatct from "./Conatct";
+import ItemPages from "./components/ItemsPages/ItemPages";
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/Organic-Farm/blog" element={<Blog />} />
         <Route path="/Organic-Farm/contact" element={<Conatct />} />
         <Route path="/Organic-Farm/cart" element={<Cart />} />
+        <Route path="/Organic-Farm/products/:productName" element={<ItemPages />} />
       </Routes>
     </div>
   );
